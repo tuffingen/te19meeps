@@ -1,7 +1,59 @@
+$background-color: #8D8DAA;    
+$color-gray: #DFDFDE;    
+$color-white: #F7F5F2;    
+$color-pink: #F56D91;    
+
+
+body{
+  background-color: $background-color;
+  margin-top: 9%;
+  margin-bottom: 9%;
+  
+}
+
+
 .margin{
-  margin: 0px 200px 0px 200px;
+  margin: 0px 200px 0px 250px;
 }
 
 .mr-2{
-  margin: 0px 0px 0px 200px;
+  margin: 0px 0px 0px 150px;
+}
+
+.w-100{
+  height: 70px;
+  width: 500px;
+}
+
+.grupp{
+  width: 100%;
+}
+
+#meep{
+  width: 709px;
+}
+
+#button-addon1{
+  
+}
+
+input{
+  float: right;
+}
+.btn{
+background-color: $color-pink;
+border-color: black;
+color: black;
+  
+}
+.btn:hover{
+  background-color: #f599b2;
+}
+.container-fluid a{
+  font-family: 'Bebas Neue', cursive;
+  font-size: 35px;
+}
+.container-fluid img{
+  height: 40px;
+  width: auto;
 }

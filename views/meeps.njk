@@ -5,11 +5,12 @@
             <form action="/meeps" method="post">
                 <div class="mb-0">
                     <label for="meep"></label>
-                    <div class="input-group mb-0">
+                    <div class="input-group mb-0 w-100">
                         <input type="meep" name="meep" id="meep" value="{{ meep }}" placeholder='Write a meep' required>
-                            <button class="btn btn-outline-secondary" type="submit" id="button-addon1">Post</button>
+                            <button class="btn btn-outline-secondary ö" type="submit" id="button-addon1">Post</button>
                         </div>
                     </div>
+                    
                 </form>
                 {% for meep in meeps %}
                     <div class="card">

@@ -1,7 +1,41 @@
+body {
+  background-color: #8D8DAA;
+  margin-top: 9%;
+  margin-bottom: 9%; }
+
 .margin {
-  margin: 0px 200px 0px 200px; }
+  margin: 0px 200px 0px 250px; }
 
 .mr-2 {
-  margin: 0px 0px 0px 200px; }
+  margin: 0px 0px 0px 150px; }
+
+.w-100 {
+  height: 70px;
+  width: 500px; }
+
+.grupp {
+  width: 100%; }
+
+#meep {
+  width: 709px; }
+
+input {
+  float: right; }
+
+.btn {
+  background-color: #F56D91;
+  border-color: black;
+  color: black; }
+
+.btn:hover {
+  background-color: #f599b2; }
+
+.container-fluid a {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 35px; }
+
+.container-fluid img {
+  height: 40px;
+  width: auto; }
 
 /*# sourceMappingURL=style.css.map */
