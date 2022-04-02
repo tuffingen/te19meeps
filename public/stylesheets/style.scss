@@ -1,7 +1,7 @@
 $background-color: #8D8DAA;    
 $color-gray: #DFDFDE;    
 $color-white: #F7F5F2;    
-$color-pink: #F56D91;    
+$color-pink: #f387a4;    
 
 
 body{
@@ -33,6 +33,7 @@ body{
   width: 709px;
 }
 
+
 #button-addon1{
   
 }
@@ -56,4 +57,8 @@ color: black;
 .container-fluid img{
   height: 40px;
   width: auto;
+}
+button{
+  border: none;
+  background-color: transparent;
 }

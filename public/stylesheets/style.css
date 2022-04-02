@@ -23,7 +23,7 @@ input {
   float: right; }
 
 .btn {
-  background-color: #F56D91;
+  background-color: #f387a4;
   border-color: black;
   color: black; }
 
@@ -37,5 +37,9 @@ input {
 .container-fluid img {
   height: 40px;
   width: auto; }
+
+button {
+  border: none;
+  background-color: transparent; }
 
 /*# sourceMappingURL=style.css.map */

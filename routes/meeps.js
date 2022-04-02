@@ -19,15 +19,14 @@ router.get('/', async (req, res, next) => {
             console.log(err);
             res.status(500).json({
                 tasks: {
-                    error: 'Error getting tasks'
+                    error: 'Error getting meeps'
                 }
             })
         });
 });
 
 router.post('/', async (req, res, next) => {
-    // { "task": "koda post" }
-    const meep = req.body.meep;
+const meep = req.body.meep;
 
         await pool.promise()
             .query('INSERT INTO meeps (body) VALUES (?)', [meep])
@@ -78,12 +77,24 @@ router.get('/:id/delete', async (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                task: {
-                    error: 'Error getting tasks'
+                meep: {
+                    error: 'Error deleting meep'
                 }
             })
         });
 });
+
+router.get('/update/:id', function(req, res, next) {
+    res.render('edit',{
+            title: 'meeps',
+            layout: 'layout.njk'
+    });
+    
+  });
+
+
+
+
 
 
 module.exports = router

@@ -10,15 +10,28 @@
                             <button class="btn btn-outline-secondary ö" type="submit" id="button-addon1">Post</button>
                         </div>
                     </div>
-                    
                 </form>
                 {% for meep in meeps %}
                     <div class="card">
                         <div class="card-header">
                             {{ meep.body }}
-                            <a href="/meeps/{{ meep.id }}/delete" class="btn btn-danger float-end">
-                                Delete
-                            </a>
+                            <div class="btn-group dropend  float-end">
+                                <button type="button" class="dots" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <a href="/meeps/{{ meep.id }}/delete" class="dropdown-item">
+                                        Delete
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                    <a href="/meeps/{{ meep.body }}/update" class="dropdown-item">
+                                        Delete
+                                    </a>
+                                
+                            
+
+                                </ul>
+                            </div>
                         </li>
                     </div>
                     <div class="card-body">
