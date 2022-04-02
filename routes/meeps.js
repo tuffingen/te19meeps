@@ -26,31 +26,31 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
-const meep = req.body.meep;
+    const meep = req.body.meep;
 
-        await pool.promise()
-            .query('INSERT INTO meeps (body) VALUES (?)', [meep])
-            .then((response) => {                
-                console.log(response[0].affectedRows);
-                if (response[0].affectedRows === 1) {
-                    res.redirect('/meeps');
-                } else {
-                    res.status(400).json({
-                        task: {
-                            error: 'Invalid meep'
-                        }
-                    });
+    await pool.promise()
+        .query('INSERT INTO meeps (body) VALUES (?)', [meep])
+        .then((response) => {
+            console.log(response[0].affectedRows);
+            if (response[0].affectedRows === 1) {
+                res.redirect('/meeps');
+            } else {
+                res.status(400).json({
+                    task: {
+                        error: 'Invalid meep'
+                    }
+                });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                task: {
+                    error: 'Error posting meep'
                 }
             })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    task: {
-                        error: 'Error posting meep'
-                    }
-                })
-            });
-    }
+        });
+}
     // res.json(req.body);
 
 );
@@ -84,13 +84,34 @@ router.get('/:id/delete', async (req, res, next) => {
         });
 });
 
-router.get('/update/:id', function(req, res, next) {
-    res.render('edit',{
-            title: 'meeps',
-            layout: 'layout.njk'
+
+
+router.get('/:id', async (req, res, next) => {
+    const id = req.params.id;
+    await pool.promise()
+        .query('SELECT * FROM meeps WHERE id = ?', [id])
+        .then(([rows, fields]) => {
+            console.log(rows);
+            res.render('edit.njk', {
+                meeps: rows,
+                title: 'meeps',
+                layout: 'layout.njk'
+            });
+            
+
+           
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                task: {
+                    error: 'Error getting meep'
+                }
+            })
+        });
     });
+
     
-  });
 
 
 
