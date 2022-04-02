@@ -1,48 +1,50 @@
 {% extends layout %}
 {% block content %}
     <main class="container">
-        <ul class="list-group">
-            <form action="/meeps" method="post">
-                <div class="mb-0">
-                    <label for="meep"></label>
-                    <div class="input-group mb-0 w-100">
-                        <input type="meep" name="meep" id="meep" value="{{ meep }}" placeholder='Write a meep' required>
-                            <button class="btn btn-outline-secondary ö" type="submit" id="button-addon1">Post</button>
-                        </div>
-                    </div>
-                </form>
-                {% for meep in meeps %}
-                    <div class="card">
-                        <div class="card-header">
-                            {{ meep.body }}
-                            <div class="btn-group dropend  float-end">
-                                <button type="button" class="dots" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <a href="/meeps/{{ meep.id }}/delete" class="dropdown-item">
-                                        Delete
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                    <a href="/meeps/{{ meep.body }}/update" class="dropdown-item">
-                                        Delete
-                                    </a>
-                                
-                            
-
-                                </ul>
+        <div class="grp">
+            <ul class="list-group">
+                <form action="/meeps" method="post">
+                    <div class="mb-0">
+                        <label for="meep"></label>
+                        <div class="input-group mb-0 w-100">
+                            <input type="meep" name="meep" id="meep" value="{{ meep }}" placeholder='Write a meep' required>
+                                <button class="btn btn-outline-secondary ö" type="submit" id="button-addon1">Post</button>
                             </div>
-                        </li>
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>{{ meep.body }}</p>
-                            <footer class="blockquote-footer">{{ meep.created_at }}
-                            </footer>
-                        </blockquote>
-                    </div>
-                </div>
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock %}</main>
+                        </div>
+                    </form>
+                    {% for meep in meeps %}
+                        <div class="card">
+                            <div class="card-header">
+                                Username
+                                <div class="btn-group dropend  float-end">
+                                    <button type="button" class="dots" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/meeps/{{ meep.id }}/delete" class="dropdown-item">
+                                                Delete
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <form action="/meeps/{{ meep.id }}" method="GET">
+                                                <input type="submit" value="Edit" class="dropdown-item"></form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>{{ meep.body }}</p>
+                                    <footer class="blockquote-footer">{{ meep.created_at }}
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
+</main>

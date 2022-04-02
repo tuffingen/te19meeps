@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/meeps', meepsRouter);
 
+
 nunjucks.configure('views', {
   autoescape: true,
   express: app
