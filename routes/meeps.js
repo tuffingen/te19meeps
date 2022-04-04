@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                tasks: {
+                meeps: {
                     error: 'Error getting meeps'
                 }
             })
@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
                 res.redirect('/meeps');
             } else {
                 res.status(400).json({
-                    task: {
+                    meeps: {
                         error: 'Invalid meep'
                     }
                 });
@@ -45,7 +45,7 @@ router.post('/', async (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                task: {
+                meeps: {
                     error: 'Error posting meep'
                 }
             })
@@ -77,7 +77,7 @@ router.get('/:id/delete', async (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                meep: {
+                meeps: {
                     error: 'Error deleting meep'
                 }
             })
@@ -104,14 +104,42 @@ router.get('/:id', async (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                task: {
+                meeps: {
                     error: 'Error getting meep'
                 }
             })
         });
     });
 
+
+    router.post('/:id/', async (req, res, next) => {
+        const meep = req.body.meep;
+        const id = req.params.id;
+        
+        await pool.promise()
+            .query('UPDATE meeps SET body = ? WHERE id = ?', [meep, id])
+            .then((response) => {
+                console.log(response[0].affectedRows    );
+                if (response[0].affectedRows === 1) {
+                    res.redirect('/meeps');
+                } else {
+                    res.status(400).redirect('/meeps');
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    task: {
+                        error: 'Error posting meep'
+                    }
+                })
+            });
+    }
+        // res.json(req.body);
     
+    );
+
+
 
 
 

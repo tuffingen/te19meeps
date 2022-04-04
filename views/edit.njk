@@ -1,13 +1,14 @@
 {% extends layout %}
 {% block  content %}
-            <form action="/meeps/update" method="post">
+            <form action="/meeps/{{meep.id}}" method="POST">
                 <div class="mb-0">
                     <label for="meep"></label>
                     <div class="input-group mb-0 w-100">
-                        <input type="meep" name="meepid" id="meep" value="{{ meep.id }}" placeholder='Write a meep' required>
-                            <button class="btn btn-outline-secondary ö" type="submit" id="button-addon1">Post</button>
+                        <input type="meep" name="meepid" id="meep" value="{{ meep.body }}" placeholder='Edit your meep...' required>
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon1">Edit</button>
                         </div>
                     </div>
                 </form>
 
-{% endblock %}
+
+{% endblock %}  
