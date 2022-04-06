@@ -7,7 +7,7 @@ require('dotenv').config();
 const nunjucks = require('nunjucks');
 
 var indexRouter = require('./routes/index');
-var meepsRouter = require('./routes/meeps');
+var iscdan_meepsRouter = require('./routes/meeps');
 
 
 
@@ -26,7 +26,7 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/meeps', meepsRouter);
+app.use('/meeps', iscdan_meepsRouter);
 
 
 nunjucks.configure('views', {
