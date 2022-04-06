@@ -6,7 +6,7 @@ const pool = require('../database');
 router.get('/', async (req, res, next) => {
 
     await pool.promise()
-        .query('SELECT * FROM meeps ORDER BY created_at DESC')
+        .query('SELECT * FROM iscdan_meeps ORDER BY created_at DESC')
         .then(([rows, fields]) => {
             console.log(rows);
             res.render('meeps.njk', {
@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
     const meep = req.body.meep;
 
     await pool.promise()
-        .query('INSERT INTO meeps (body) VALUES (?)', [meep])
+        .query('INSERT INTO iscdan_meeps (body) VALUES (?)', [meep])
         .then((response) => {
             console.log(response[0].affectedRows);
             if (response[0].affectedRows === 1) {
@@ -64,7 +64,7 @@ router.get('/:id/delete', async (req, res, next) => {
         });
     }
     await pool.promise()
-        .query('DELETE FROM meeps WHERE id = ?', [id])
+        .query('DELETE FROM iscdan_meeps WHERE id = ?', [id])
         .then((response) => {
             if (response[0].affectedRows === 1) {
                 res.redirect('/meeps');
@@ -89,7 +89,7 @@ router.get('/:id/delete', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     const id = req.params.id;
     await pool.promise()
-        .query('SELECT * FROM meeps WHERE id = ?', [id])
+        .query('SELECT * FROM iscdan_meeps WHERE id = ?', [id])
         .then(([rows, fields]) => {
             console.log(rows);
             res.render('edit.njk', {
@@ -111,13 +111,13 @@ router.get('/:id', async (req, res, next) => {
         });
     });
 
-    
+
     router.post('/:id/', async (req, res, next) => {
         const meep = req.body.meep;
         const id = req.params.id;
         
         await pool.promise()
-            .query('UPDATE meeps SET body = ? WHERE id = ?', [meep, id])
+            .query('UPDATE iscdan_meeps SET body = ? WHERE id = ?', [meep, id])
             .then((response) => {
                 console.log(response[0].affectedRows    );
                 if (response[0].affectedRows === 1) {
