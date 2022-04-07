@@ -4,12 +4,9 @@
         <div class="grp">
             <ul class="list-group">
                 <form action="/meeps" method="post">
-                    <div class="mb-0">
-                        <label for="meep"></label>
-                        <div class="input-group mb-0 w-100">
-                            <input type="meep" name="meep" id="meep" value="{{ meep }}" placeholder='Write a meep' required>
-                                <button class="btn btn-outline-secondary ö" type="submit" id="button-addon1">Post</button>
-                            </div>
+                    <div class="input-group mb-3">
+                        <input type="meep" name="meep" id="meep" value="{{ meep }}" class="form-control" placeholder="Meep something..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Post</button>
                         </div>
                     </form>
                     {% for meep in meeps %}
