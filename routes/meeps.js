@@ -86,58 +86,58 @@ router.get('/:id/delete', async (req, res, next) => {
 
 
 
-router.get('/:id', async (req, res, next) => {
-    const id = req.params.id;
-    await pool.promise()
-        .query('SELECT * FROM iscdan_meeps WHERE id = ?', [id])
-        .then(([rows, fields]) => {
-            console.log(rows);
-            res.render('edit.njk', {
-                meeps: rows,
-                title: 'meeps',
-                layout: 'layout.njk'
-            });
+// router.get('/:id', async (req, res, next) => {
+//     const id = req.params.id;
+//     await pool.promise()
+//         .query('SELECT * FROM iscdan_meeps WHERE id = ?', [id])
+//         .then(([rows, fields]) => {
+//             console.log(rows);
+//             res.render('edit.njk', {
+//                 meeps: rows,
+//                 title: 'meeps',
+//                 layout: 'layout.njk'
+//             });
             
 
            
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                meeps: {
-                    error: 'Error getting meep'
-                }
-            })
-        });
-    });
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.status(500).json({
+//                 meeps: {
+//                     error: 'Error getting meep'
+//                 }
+//             })
+//         });
+//     });
 
 
-    router.post('/:id/', async (req, res, next) => {
-        const meep = req.body.meep;
-        const id = req.params.id;
+//     router.post('/:id/', async (req, res, next) => {
+//         const meep = req.body.meep;
+//         const id = req.params.id;
         
-        await pool.promise()
-            .query('UPDATE iscdan_meeps SET body = ? WHERE id = ?', [meep, id])
-            .then((response) => {
-                console.log(response[0].affectedRows    );
-                if (response[0].affectedRows === 1) {
-                    res.redirect('/meeps');
-                } else {
-                    res.status(400).redirect('/meeps');
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json({
-                    task: {
-                        error: 'Error posting meep'
-                    }
-                })
-            });
-    }
-        // res.json(req.body);
+//         await pool.promise()
+//             .query('UPDATE iscdan_meeps SET body = ? WHERE id = ?', [meep, id])
+//             .then((response) => {
+//                 console.log(response[0].affectedRows    );
+//                 if (response[0].affectedRows === 1) {
+//                     res.redirect('/meeps');
+//                 } else {
+//                     res.status(400).redirect('/meeps');
+//                 }
+//             })
+//             .catch(err => {
+//                 console.log(err);
+//                 res.status(500).json({
+//                     task: {
+//                         error: 'Error posting meep'
+//                     }
+//                 })
+//             });
+//     }
+//         // res.json(req.body);
     
-    );
+//     );
 
 
     router.get('/api', async (req, res, next) => {
