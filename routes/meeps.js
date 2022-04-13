@@ -145,9 +145,7 @@ router.get('/:id/delete', async (req, res, next) => {
             .query('SELECT * FROM iscdan_meeps')
             .then(([rows, fields]) => {
                 res.json({
-                    tasks: {
-                        data: rows
-                    }
+                    meeps: rows,
                 });
             })
             .catch(err => {
