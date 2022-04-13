@@ -140,7 +140,25 @@ router.get('/:id', async (req, res, next) => {
     );
 
 
-
+    router.get('/api', async (req, res, next) => {
+        await pool.promise()
+            .query('SELECT * FROM iscdan_meeps')
+            .then(([rows, fields]) => {
+                res.json({
+                    tasks: {
+                        data: rows
+                    }
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    tasks: {
+                        error: 'Error getting tasks'
+                    }
+                })
+            });
+    });
 
 
 
